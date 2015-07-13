@@ -15,7 +15,7 @@
          * @param {$rootScope.Scope} scope
          * @param {Function} fn
          */
-        safeApply = helpers.safeApply = function(scope, fn) {
+        safeApply = helpers.safeApply = function (scope, fn) {
             var phase = scope.$$phase;
             if (phase === '$apply' || phase === '$digest') {
                 if (fn && (typeof(fn) === 'function')) {
@@ -96,7 +96,7 @@
             } else if (attrs[helpers.getAttrName('templateUrl')]) {
                 lookupTemplate(attrs[helpers.getAttrName('templateUrl')], scope).then(function (template) {
                     if (template) {
-                        options.template = template;
+                        options.template = template.data || template;
                         deferred.resolve(template);
                     }
                 });
